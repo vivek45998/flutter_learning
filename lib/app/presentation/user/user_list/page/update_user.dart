@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lerning_with_rest_api/app/core/values/app_colors.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/data/model/user_list_model.dart';
@@ -31,7 +32,8 @@ class _UpdateUserState extends State<UpdateUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Update user"),
+        title: const Text("Update User",),
+        backgroundColor:AppColors.colorApp,
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -40,15 +42,18 @@ class _UpdateUserState extends State<UpdateUser> {
             children: [
               KTextWidget(
                 nameController: ctrl.fullNameController.value,
-                fullName: "user_name",
+                fullName: "Full Name",
+                isObsecure: true,
               ),
               KTextWidget(
                 nameController: ctrl.emailController.value,
-                fullName: "student_email",
+                fullName: "User Email",
+                isObsecure: false,
               ),
               KTextWidget(
                 nameController: ctrl.username.value,
-                fullName: "student_roll_number",
+                fullName: "User Name",
+                isObsecure: false,
               ),
 
               InkWell(
@@ -56,7 +61,7 @@ class _UpdateUserState extends State<UpdateUser> {
                   widget.data?.fullName= ctrl.fullNameController.value.text;
 
                   widget.data?.username = ctrl.emailController.value.text;
-                  //ctrl.updateUserList(widget.data);
+                  ctrl.updateUserList(widget.data);
                 },
                 child: const Center(child: Text("Update")),
               ),

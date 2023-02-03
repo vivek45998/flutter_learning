@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class KTextWidget extends StatelessWidget {
-  KTextWidget({Key? key, required this.nameController, required this.fullName})
+  KTextWidget({Key? key, required this.nameController, required this.fullName,this.isObsecure})
       : super(key: key);
   TextEditingController nameController;
   var fullName;
-
+   bool? isObsecure=false;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -28,6 +28,7 @@ class KTextWidget extends StatelessWidget {
                 ),
               ),
               child: TextField(
+                enabled: isObsecure,
                 controller: nameController,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(),
