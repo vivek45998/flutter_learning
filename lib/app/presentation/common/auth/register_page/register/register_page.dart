@@ -1,15 +1,16 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_lerning_with_rest_api/app/presentation/user/register_ctrl/register_page_ctrl.dart';
+import 'package:flutter_lerning_with_rest_api/app/global_widgets/padding_widgets.dart';
 import 'package:get/get.dart';
+import '../../../../../core/themes/text_styles.dart';
+import '../../../../../core/values/app_colors.dart';
+import '../../../../../core/values/app_diemen.dart';
+import '../../../../../core/values/app_strings.dart';
+import '../../../../../global_widgets/k_button.dart';
+import '../../../../../global_widgets/neumorfic_text_field.dart';
+import '../register_ctrl/register_page_ctrl.dart';
 
-import '../../../core/themes/text_styles.dart';
-import '../../../core/values/app_colors.dart';
-import '../../../core/values/app_diemen.dart';
-import '../../../core/values/app_strings.dart';
-import '../../../global_widgets/k_button.dart';
-import '../../../global_widgets/neumorfic_text_field.dart';
-
+// ignore: must_be_immutable
 class RegisterPage extends StatelessWidget {
   RegisterPage({Key? key}) : super(key: key);
   var ctrl = Get.put(RegisterController());
@@ -20,7 +21,7 @@ class RegisterPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.colorApp,
         title: Text(
-          "Register",
+          AppStrings.register,
           style: TextStyles.sfProDisplayRegular(
               AppColors.colorWhite, AppDimen.unitHeight * 10),
         ),
@@ -48,7 +49,7 @@ class RegisterPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Text(
-                    "Please enter the detail below to continue.",
+                    AppStrings.signupAndLoginTitleString,
                     style: TextStyles.modernistBold(
                       AppColors.colorApp,
                       AppDimen.unitWidth * 15,
@@ -56,51 +57,47 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.only(left: 20.0, right: 20.0, top: 20),
-                child: NeumorficTextField(
+              PaddingWidgets(
+                bottom: 0,
+                top: 20,
+                widget: NeumorficTextField(
                   text: ctrl.userNameController.value,
-                  titleName: "User Name",
+                  titleName: AppStrings.titleUserName,
                   isObscure: false,
                 ),
               ),
               SizedBox(
                 height: AppDimen.unitHeight * 10,
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 20.0,
-                  right: 20.0,
-                ),
-                child: NeumorficTextField(
+              PaddingWidgets(
+                bottom: 0,
+                top: 0,
+                widget: NeumorficTextField(
                   text: ctrl.fullNameController.value,
-                  titleName: "Full Name",
+                  titleName: AppStrings.titleFullName,
                   isObscure: false,
                 ),
               ),
               SizedBox(
                 height: AppDimen.unitHeight * 10,
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 20.0,
-                  right: 20.0,
-                ),
-                child: NeumorficTextField(
+              PaddingWidgets(
+                bottom: 0,
+                top: 0,
+                widget: NeumorficTextField(
                   text: ctrl.userEmailController.value,
-                  titleName: "User Email",
+                  titleName: AppStrings.titleUserName,
                   isObscure: false,
                 ),
               ),
               SizedBox(
                 height: AppDimen.unitHeight * 10,
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 20.0, right: 20.0, bottom: 20.0),
-                child: NeumorficTextField(
-                  titleName: "Password",
+              PaddingWidgets(
+                bottom: 20.0,
+                top: 0,
+                widget: NeumorficTextField(
+                  titleName: AppStrings.titlePassword,
                   text: ctrl.userPassword.value,
                   isObscure: true,
                 ),
@@ -111,27 +108,27 @@ class RegisterPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: NeumorphismButton(
-                  buttonName: "Register User",
+                  buttonName: AppStrings.registerUser,
                   onTap: () {
                     ctrl.afterRegistationNavigateToDashboard();
-                  //  ctrl.navigateToLoginPage();
+                    //  ctrl.navigateToLoginPage();
                   },
                 ),
               ),
               RichText(
                 text: TextSpan(
-                  text: "Already have an account?",
+                  text: AppStrings.alreadyHaveAccount,
                   style: const TextStyle(color: AppColors.colorTextField),
                   children: <TextSpan>[
                     TextSpan(
-                        text: 'Login',
+                        text: AppStrings.login,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: AppColors.colorApp),
                         // ignore: void_checks
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                          ctrl.navigateToLoginPage();
+                            ctrl.navigateToLoginPage();
                           }),
                   ],
                 ),

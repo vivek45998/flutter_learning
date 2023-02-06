@@ -9,7 +9,7 @@ class UpdateTextFieldWidget extends StatelessWidget {
       {Key? key, this.nameController, this.isEnable, this.data})
       : super(key: key);
   TextEditingController? nameController;
-  UserList? data;
+  UserData? data;
   bool? isEnable = false;
   var ctrl = Get.put(UserListCtrl());
 

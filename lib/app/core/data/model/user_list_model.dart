@@ -1,5 +1,5 @@
-class UserList {
-  UserList({
+class UserData {
+  UserData({
      this.fullName,
     this.username,
     this.email,
@@ -13,7 +13,7 @@ class UserList {
   DateTime? date;
   String ?id;
 
-  factory UserList.fromJson(Map<String, dynamic> json) => UserList(
+  factory UserData.fromJson(Map<String, dynamic> json) => UserData(
     fullName: json["fullName"],
     username: json["username"],
     email: json["email"],

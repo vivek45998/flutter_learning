@@ -1,25 +1,25 @@
-class UserData {
-  UserData({
+class UserDataInfo {
+  UserDataInfo({
      this.message,
-     this.data,
+     this.userProfile,
   });
 
   String? message;
-  Data ?data;
+  UserProfile ?userProfile;
 
-  factory UserData.fromJson(Map<String, dynamic> json) => UserData(
+  factory UserDataInfo.fromJson(Map<String, dynamic> json) =>UserDataInfo(
     message: json["message"],
-    data: Data.fromJson(json["data"]),
+    userProfile: UserProfile.fromJson(json["data"]),
   );
 
   Map<String, dynamic> toJson() => {
     "message": message,
-    "data": data?.toJson(),
+    "userProfile": userProfile?.toJson(),
   };
 }
 
-class Data {
-  Data({
+class UserProfile{
+  UserProfile({
  this.fullName,
 this.username,
   this.email,
@@ -35,7 +35,7 @@ this.username,
   String ?id;
   String ?token;
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory UserProfile.fromJson(Map<String, dynamic> json) => UserProfile(
     fullName: json["fullName"],
     username: json["username"],
     email: json["email"],

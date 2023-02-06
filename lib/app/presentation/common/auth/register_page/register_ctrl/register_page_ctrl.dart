@@ -8,9 +8,11 @@ class RegisterController extends BaseLoaderController{
   var userPassword=TextEditingController().obs;
   var userEmailController=TextEditingController().obs;
   var fullNameController=TextEditingController().obs;
+  ///navigate to register page
   navigateToLoginPage(){
     Get.toNamed(AppRoutes.loginPage);
   }
+  ///after registered navigate to user list page
   afterRegistationNavigateToDashboard(){
     Get.offNamed(AppRoutes.userList);
   }

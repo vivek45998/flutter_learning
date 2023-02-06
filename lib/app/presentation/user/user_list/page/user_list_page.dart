@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lerning_with_rest_api/app/core/values/app_colors.dart';
 import 'package:flutter_lerning_with_rest_api/app/core/values/app_diemen.dart';
+import 'package:flutter_lerning_with_rest_api/app/core/values/app_strings.dart';
 import 'package:flutter_lerning_with_rest_api/app/presentation/user/user_list/ctrl/user_list_ctrl.dart';
 import 'package:flutter_lerning_with_rest_api/app/presentation/user/user_list/page/update_user.dart';
 import 'package:get/get.dart';
@@ -17,10 +18,10 @@ class UserListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.colorApp,
-        title: const Text("User List"),
-        actions:  [
+        title: const Text(AppStrings.userList),
+        actions: [
           InkWell(
-            onTap: (){
+            onTap: () {
               ctrl.logOut();
             },
             child: const Icon(

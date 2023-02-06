@@ -1,8 +1,8 @@
 import 'package:flutter_lerning_with_rest_api/app/presentation/common/splash/splash_page/splash_page.dart';
-import 'package:flutter_lerning_with_rest_api/app/presentation/user/login/login_page/login_page.dart';
-import 'package:flutter_lerning_with_rest_api/app/presentation/user/register_page/register_page.dart';
 import 'package:flutter_lerning_with_rest_api/app/presentation/user/user_list/page/user_list_page.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import '../presentation/common/auth/login/login_page/login_page.dart';
+import '../presentation/common/auth/register_page/register/register_page.dart';
 import 'app_routes.dart';
 
 class AppPages {

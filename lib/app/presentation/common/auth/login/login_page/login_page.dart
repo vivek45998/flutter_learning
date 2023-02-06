@@ -4,12 +4,14 @@ import 'package:flutter_lerning_with_rest_api/app/core/themes/text_styles.dart';
 import 'package:flutter_lerning_with_rest_api/app/core/values/app_colors.dart';
 import 'package:flutter_lerning_with_rest_api/app/core/values/app_diemen.dart';
 import 'package:flutter_lerning_with_rest_api/app/global_widgets/neumorfic_text_field.dart';
-import 'package:flutter_lerning_with_rest_api/app/presentation/user/login/login_ctrl/login_ctrl.dart';
+import 'package:flutter_lerning_with_rest_api/app/global_widgets/padding_widgets.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/values/app_strings.dart';
-import '../../../../global_widgets/k_button.dart';
+import '../../../../../core/values/app_strings.dart';
+import '../../../../../global_widgets/k_button.dart';
+import '../login_ctrl/login_ctrl.dart';
 
+// ignore: must_be_immutable
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
   var ctrl = Get.put(LoginController());
@@ -20,7 +22,7 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.colorApp,
         title: Text(
-          "Login",
+          AppStrings.login,
           style: TextStyles.sfProDisplayRegular(
               AppColors.colorWhite, AppDimen.unitHeight * 10),
         ),
@@ -48,7 +50,7 @@ class LoginPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Text(
-                    "Please enter the detail below to continue.",
+                    AppStrings.signupAndLoginTitleString,
                     style: TextStyles.modernistBold(
                       AppColors.colorApp,
                       AppDimen.unitWidth * 15,
@@ -56,23 +58,23 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.only(left: 20.0, right: 20.0, top: 20),
-                child: NeumorficTextField(
+              PaddingWidgets(
+                bottom: 0,
+                top: 20,
+                widget: NeumorficTextField(
                   text: ctrl.userNameController.value,
-                  titleName: "User Name",
+                  titleName: AppStrings.titleUserName,
                   isObscure: false,
                 ),
               ),
               SizedBox(
                 height: AppDimen.unitHeight * 10,
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 20.0, right: 20.0, bottom: 20.0),
-                child: NeumorficTextField(
-                  titleName: "Password",
+              PaddingWidgets(
+                bottom: 20,
+                top: 0,
+                widget: NeumorficTextField(
+                  titleName: AppStrings.titlePassword,
                   text: ctrl.userPassword.value,
                   isObscure: true,
                 ),
@@ -80,13 +82,14 @@ class LoginPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: NeumorphismButton(
-                  buttonName: "Login",
+              PaddingWidgets(
+                bottom: 20,
+                top: 20,
+                widget: NeumorphismButton(
+                  buttonName: AppStrings.login,
                   onTap: () {
                     ctrl.loginUserToNavigateDashboard();
-                   // ctrl.navigateToRegisterPage();
+                    // ctrl.navigateToRegisterPage();
                   },
                 ),
               ),
@@ -95,11 +98,11 @@ class LoginPage extends StatelessWidget {
               ),
               RichText(
                 text: TextSpan(
-                  text: "Don't have an account!",
+                  text: AppStrings.doNotHaveAccount,
                   style: const TextStyle(color: AppColors.colorTextField),
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'Register',
+                      text: AppStrings.register,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: AppColors.colorApp),
