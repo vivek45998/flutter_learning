@@ -1,13 +1,13 @@
-class UserDataInfo {
-  UserDataInfo({
-    this.message,
-     this.userProfile,
+class UserRegisterResponse {
+  UserRegisterResponse({
+   this.message,
+    this.userProfile,
   });
 
   String? message;
   UserProfile? userProfile;
 
-  factory UserDataInfo.fromJson(Map<String, dynamic> json) => UserDataInfo(
+  factory UserRegisterResponse.fromJson(Map<String, dynamic> json) => UserRegisterResponse(
     message: json["message"],
     userProfile: UserProfile.fromJson(json["userProfile"]),
   );
@@ -20,22 +20,20 @@ class UserDataInfo {
 
 class UserProfile {
   UserProfile({
-  this.fullName,
-     this.username,
-    this.email,
-     this.password,
-  this.date,
+    this.fullName,
+    this.username,
+     this.email,
+    this.password,
+     this.date,
      this.id,
-    this.token,
   });
 
-  String? fullName;
+  String ?fullName;
   String ?username;
   String ?email;
   String ?password;
   DateTime? date;
   String ?id;
-  String ?token;
 
   factory UserProfile.fromJson(Map<String, dynamic> json) => UserProfile(
     fullName: json["fullName"],
@@ -44,7 +42,6 @@ class UserProfile {
     password: json["password"],
     date: DateTime.parse(json["date"]),
     id: json["id"],
-    token: json["token"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -54,6 +51,5 @@ class UserProfile {
     "password": password,
     "date": date?.toIso8601String(),
     "id": id,
-    "token": token,
   };
 }

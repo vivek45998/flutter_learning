@@ -3,5 +3,6 @@ class AppRoutes {
   static const registerPage = '/register';
   static const loginPage = '/login';
   static const userList = '/userList';
+  static const updateUser = '/updateUser';
 
 }

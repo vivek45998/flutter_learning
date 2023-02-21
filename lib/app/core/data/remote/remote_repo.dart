@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_lerning_with_rest_api/app/core/data/local_storage/local_storage.dart';
+import 'package:flutter_lerning_with_rest_api/app/core/data/model/register_response_model.dart';
 import 'package:flutter_lerning_with_rest_api/app/core/data/model/user_data.dart';
 import 'package:flutter_lerning_with_rest_api/app/core/values/app_strings.dart';
 import 'package:get/get.dart';
@@ -48,9 +49,28 @@ extension RemoteRepo on GetxController {
     }
   }
 /// update user
-  updateUserData(data) async {
+  updateUserData(Map<String, String> userData) async {
+    print(userData["id"]);
     var response = await http.put(
-      Uri.parse("${NetworkConstants.userUpdateApi}/${data.id}"),
+      Uri.parse("${NetworkConstants.userUpdateApi}/${userData["id"]}"),
+      headers: <String, String>{
+        NetworkConstants.contentTypeKey: NetworkConstants.contentTypeValue,
+        NetworkConstants.authorizationKey: "Basic ${DataStorage.getData(DataStorage.tokenId)}"
+      },
+      body: jsonEncode(userData),
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      var data = UserData.fromJson(jsonDecode(response.body));
+      return data;
+    } else {
+      print("error====${response.body}");
+      throw Exception(NetworkConstants.errorException);
+    }
+  }
+  deleteUser(data) async {
+    var response = await http.delete(
+      Uri.parse("${NetworkConstants.userDeleteApi}/${data.id}"),
       headers: <String, String>{
         NetworkConstants.contentTypeKey: NetworkConstants.contentTypeValue,
         NetworkConstants.authorizationKey: "Basic ${DataStorage.getData(DataStorage.tokenId)}"
@@ -63,6 +83,21 @@ extension RemoteRepo on GetxController {
       return data;
     } else {
       print("error====${response.body}");
+      throw Exception(NetworkConstants.errorException);
+    }
+  }
+  userRegister(Map<String, String> userData) async {
+    var response = await http.post(
+      Uri.parse(NetworkConstants.userRegisterApi),
+      headers: <String, String>{
+        NetworkConstants.contentTypeKey: NetworkConstants.contentTypeValue,
+      },
+      body: jsonEncode(userData),
+    );
+    if (response.statusCode == 200) {
+      var data = UserRegisterResponse.fromJson(jsonDecode(response.body));
+      return data;
+    } else {
       throw Exception(NetworkConstants.errorException);
     }
   }

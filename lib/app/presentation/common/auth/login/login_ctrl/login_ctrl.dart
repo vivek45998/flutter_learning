@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_lerning_with_rest_api/app/core/data/local_storage/local_storage.dart';
 import 'package:flutter_lerning_with_rest_api/app/core/data/remote/remote_repo.dart';
 import 'package:flutter_lerning_with_rest_api/app/core/services/controller.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_lerning_with_rest_api/app/routes/app_routes.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/data/model/user_data.dart';
-
 
 class LoginController extends BaseLoaderController {
   var userNameController = TextEditingController().obs;
@@ -31,7 +31,10 @@ class LoginController extends BaseLoaderController {
           DataStorage.keyIsLoggedIn, userData.value.userProfile?.id);
       DataStorage.saveData(
           DataStorage.tokenId, userData.value.userProfile?.token);
-      print("${userData.value.message}");
+      DataStorage.saveData(DataStorage.passwordKey, userData.value.userProfile?.password);
+      if (kDebugMode) {
+        print("${userData.value.message}");
+      }
     }
 
     update();

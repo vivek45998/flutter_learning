@@ -86,7 +86,7 @@ class RegisterPage extends StatelessWidget {
                 top: 0,
                 widget: NeumorficTextField(
                   text: ctrl.userEmailController.value,
-                  titleName: AppStrings.titleUserName,
+                  titleName: AppStrings.titleEmail,
                   isObscure: false,
                 ),
               ),

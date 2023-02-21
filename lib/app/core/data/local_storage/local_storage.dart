@@ -6,6 +6,7 @@ class DataStorage {
   static const String keyUserData = 'userData';
   static const String keyUserId = 'userId';
   static const String tokenId="loginTokenId";
+  static const String passwordKey="passwordKey";
 
   static final _localStorageBox = GetStorage();
 
